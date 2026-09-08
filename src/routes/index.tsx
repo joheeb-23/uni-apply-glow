@@ -130,8 +130,9 @@ function LandingPage() {
               </div>
             </div>
 
-            <Card elevated id="status">
-              <form onSubmit={submitStatus} id="status">
+            <div id="status" className="scroll-mt-24">
+              <Card elevated>
+              <form onSubmit={submitStatus}>
                 <div className="flex items-center justify-between gap-3">
                   <p className="font-display text-sm font-bold text-foreground/80">
                     Check Application Status
@@ -166,11 +167,12 @@ function LandingPage() {
                 )}
               </form>
             </Card>
+            </div>
           </div>
         </section>
 
         {/* Important Information */}
-        <section id="about" className="relative mx-auto max-w-7xl px-5 pb-16 lg:px-8">
+        <section id="about" className="scroll-mt-24 relative mx-auto max-w-7xl px-5 pb-16 lg:px-8">
           <SectionHeading eyebrow="Key dates" title="Important Information" />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {keyDates.map((item) => (
@@ -188,7 +190,7 @@ function LandingPage() {
         </section>
 
         {/* Application Process */}
-        <section id="admission" className="relative mx-auto max-w-7xl px-5 pb-16 lg:px-8">
+        <section id="admission" className="scroll-mt-24 relative mx-auto max-w-7xl px-5 pb-16 lg:px-8">
           <SectionHeading eyebrow="How it works" title="Application Process" />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step, i) => (
@@ -204,7 +206,7 @@ function LandingPage() {
         </section>
 
         {/* Programmes */}
-        <section id="programmes" className="relative mx-auto max-w-7xl px-5 pb-16 lg:px-8">
+        <section id="programmes" className="scroll-mt-24 relative mx-auto max-w-7xl px-5 pb-16 lg:px-8">
           <SectionHeading
             eyebrow="Course of study"
             title="Popular Programmes"
@@ -221,8 +223,7 @@ function LandingPage() {
                 View all →
               </button>
             }
-          >
-          </SectionHeading>
+          />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {programmes.map((p) => (
               <Card key={p.name}>
@@ -238,7 +239,7 @@ function LandingPage() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="relative mx-auto max-w-7xl px-5 pb-20 lg:px-8">
+        <section id="contact" className="scroll-mt-24 relative mx-auto max-w-7xl px-5 pb-20 lg:px-8">
           <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
             <Card elevated>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
