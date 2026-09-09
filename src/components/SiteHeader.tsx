@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { navLinks, university } from "@/data/portal";
 import { Button } from "@/components/ui/primitives";
 
@@ -8,7 +9,7 @@ export function SiteHeader({ onLogin, onApply }: { onLogin: () => void; onApply:
   return (
     <header className="glass edge sticky top-0 z-30 border-b border-white/40">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
-        <a href="#home" className="flex min-w-0 items-center gap-3">
+        <Link to="/" className="flex min-w-0 items-center gap-3">
           <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary font-display text-lg font-bold text-primary-foreground shadow-[var(--shadow-brand)]">
             {university.short}
           </span>
