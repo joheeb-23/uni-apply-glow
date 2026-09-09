@@ -1,7 +1,16 @@
+import { Link } from "@tanstack/react-router";
 import { university } from "@/data/portal";
 
-const quickLinks = ["Admission", "Programmes", "Check Status"];
-const portalLinks = ["Login", "Help Centre", "Privacy"];
+const quickLinks = [
+  { label: "Verify Candidate", to: "/verify" as const },
+  { label: "Eligibility", to: "/eligibility" as const },
+  { label: "Programmes", to: "/" as const },
+];
+const portalLinks = [
+  { label: "Home", to: "/" as const },
+  { label: "Help Centre", to: "/" as const },
+  { label: "Privacy", to: "/" as const },
+];
 
 export function SiteFooter() {
   return (
@@ -22,10 +31,10 @@ export function SiteFooter() {
           </p>
           <ul className="mt-3 space-y-2 text-sm text-foreground/60">
             {quickLinks.map((l) => (
-              <li key={l}>
-                <a className="transition hover:text-primary" href="#admission">
-                  {l}
-                </a>
+              <li key={l.label}>
+                <Link className="transition hover:text-primary" to={l.to}>
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -46,10 +55,10 @@ export function SiteFooter() {
           </p>
           <ul className="mt-3 space-y-2 text-sm text-foreground/60">
             {portalLinks.map((l) => (
-              <li key={l}>
-                <a className="transition hover:text-primary" href="#home">
-                  {l}
-                </a>
+              <li key={l.label}>
+                <Link className="transition hover:text-primary" to={l.to}>
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { navLinks, university } from "@/data/portal";
 import { Button } from "@/components/ui/primitives";
 
@@ -8,7 +9,7 @@ export function SiteHeader({ onLogin, onApply }: { onLogin: () => void; onApply:
   return (
     <header className="glass edge sticky top-0 z-30 border-b border-white/40">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
-        <a href="#home" className="flex min-w-0 items-center gap-3">
+        <Link to="/" className="flex min-w-0 items-center gap-3">
           <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary font-display text-lg font-bold text-primary-foreground shadow-[var(--shadow-brand)]">
             {university.short}
           </span>
@@ -20,13 +21,19 @@ export function SiteHeader({ onLogin, onApply }: { onLogin: () => void; onApply:
               {university.tagline}
             </span>
           </span>
-        </a>
+        </Link>
+
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-foreground/70 lg:flex">
           {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="transition hover:text-primary">
+            <Link
+              key={link.label}
+              to={link.href as "/"}
+              className="transition hover:text-primary"
+              activeProps={{ className: "text-primary" }}
+            >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -34,9 +41,9 @@ export function SiteHeader({ onLogin, onApply }: { onLogin: () => void; onApply:
           <Button variant="ghost" className="hidden px-4 py-2 sm:inline-flex" onClick={onLogin}>
             Login
           </Button>
-          <Button className="px-4 py-2 rounded-lg" onClick={onApply}>
-            Apply Now
-          </Button>
+          <Link to="/verify">
+            <Button className="px-4 py-2 rounded-lg">Apply Now</Button>
+          </Link>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
@@ -52,13 +59,13 @@ export function SiteHeader({ onLogin, onApply }: { onLogin: () => void; onApply:
           <ul className="grid gap-1 pt-3 text-sm font-medium text-foreground/70">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href as "/"}
                   onClick={() => setOpen(false)}
                   className="block rounded-lg px-2 py-2 transition hover:bg-white/60 hover:text-primary"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

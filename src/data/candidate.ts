@@ -21,7 +21,7 @@ export const mockCandidate: Candidate = {
   photo:
     "https://images.unsplash.com/photo-1633332755192-727a05cfa1cd?w=400&h=400&fit=crop&crop=faces",
   fullName: "Oluwaseun Adewale Johnson",
-  jambReg: "98765432100",
+  jambReg: "9876543210",
   jambScore: 214,
   email: "oluwaseun.johnson@example.com",
   phone: "+234 803 555 0142",

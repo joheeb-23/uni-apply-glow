@@ -10,11 +10,11 @@ export const university = {
 };
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Admission", href: "#admission" },
-  { label: "Programmes", href: "#programmes" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Verify", href: "/verify" },
+  { label: "Eligibility", href: "/eligibility" },
+  { label: "Programmes", href: "/#programmes" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const keyDates = [
