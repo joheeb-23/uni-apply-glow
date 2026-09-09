@@ -21,13 +21,19 @@ export function SiteHeader({ onLogin, onApply }: { onLogin: () => void; onApply:
               {university.tagline}
             </span>
           </span>
-        </a>
+        </Link>
+
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-foreground/70 lg:flex">
           {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="transition hover:text-primary">
+            <Link
+              key={link.label}
+              to={link.href as "/"}
+              className="transition hover:text-primary"
+              activeProps={{ className: "text-primary" }}
+            >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
