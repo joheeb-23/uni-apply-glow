@@ -41,9 +41,9 @@ export function SiteHeader({ onLogin, onApply }: { onLogin: () => void; onApply:
           <Button variant="ghost" className="hidden px-4 py-2 sm:inline-flex" onClick={onLogin}>
             Login
           </Button>
-          <Button className="px-4 py-2 rounded-lg" onClick={onApply}>
-            Apply Now
-          </Button>
+          <Link to="/verify">
+            <Button className="px-4 py-2 rounded-lg">Apply Now</Button>
+          </Link>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
@@ -59,13 +59,13 @@ export function SiteHeader({ onLogin, onApply }: { onLogin: () => void; onApply:
           <ul className="grid gap-1 pt-3 text-sm font-medium text-foreground/70">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href as "/"}
                   onClick={() => setOpen(false)}
                   className="block rounded-lg px-2 py-2 transition hover:bg-white/60 hover:text-primary"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
