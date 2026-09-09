@@ -103,30 +103,15 @@ function LandingPage() {
                 application and monitor your admission status.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button
-                  onClick={() =>
-                    openModal(
-                      "Start your application",
-                      "The application form is part of the prototype walkthrough. Follow the eight steps below to see what each stage collects.",
-                    )
-                  }
-                >
-                  Apply Now
-                </Button>
+                <Link to="/verify">
+                  <Button>Apply Now</Button>
+                </Link>
                 <a href="#status">
                   <Button variant="glass">Check Application Status</Button>
                 </a>
-                <Button
-                  variant="ghost"
-                  onClick={() =>
-                    openModal(
-                      "Applicant login",
-                      "This is a UI prototype, so sign-in is not connected. In the live portal you would enter your JAMB registration number and password here.",
-                    )
-                  }
-                >
-                  Login
-                </Button>
+                <Link to="/verify">
+                  <Button variant="ghost">Login</Button>
+                </Link>
               </div>
             </div>
 
