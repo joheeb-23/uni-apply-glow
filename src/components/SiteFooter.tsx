@@ -1,7 +1,16 @@
+import { Link } from "@tanstack/react-router";
 import { university } from "@/data/portal";
 
-const quickLinks = ["Admission", "Programmes", "Check Status"];
-const portalLinks = ["Login", "Help Centre", "Privacy"];
+const quickLinks = [
+  { label: "Verify Candidate", to: "/verify" as const },
+  { label: "Eligibility", to: "/eligibility" as const },
+  { label: "Programmes", to: "/#programmes" as const },
+];
+const portalLinks = [
+  { label: "Home", to: "/" as const },
+  { label: "Help Centre", to: "/" as const },
+  { label: "Privacy", to: "/" as const },
+];
 
 export function SiteFooter() {
   return (
