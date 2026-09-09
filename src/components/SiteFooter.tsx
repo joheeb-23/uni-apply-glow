@@ -31,10 +31,10 @@ export function SiteFooter() {
           </p>
           <ul className="mt-3 space-y-2 text-sm text-foreground/60">
             {quickLinks.map((l) => (
-              <li key={l}>
-                <a className="transition hover:text-primary" href="#admission">
-                  {l}
-                </a>
+              <li key={l.label}>
+                <Link className="transition hover:text-primary" to={l.to}>
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -55,10 +55,10 @@ export function SiteFooter() {
           </p>
           <ul className="mt-3 space-y-2 text-sm text-foreground/60">
             {portalLinks.map((l) => (
-              <li key={l}>
-                <a className="transition hover:text-primary" href="#home">
-                  {l}
-                </a>
+              <li key={l.label}>
+                <Link className="transition hover:text-primary" to={l.to}>
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>
