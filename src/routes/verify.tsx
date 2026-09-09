@@ -86,7 +86,7 @@ function VerifyPage() {
 
               <Field
                 label="JAMB Registration Number"
-                placeholder="e.g. 98765432100"
+                placeholder="e.g. 9876543210"
                 className="mt-5"
                 value={jambReg}
                 onChange={(e) =>
