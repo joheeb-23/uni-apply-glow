@@ -34,7 +34,7 @@ export const Route = createFileRoute("/verify")({
 
 function VerifyPage() {
   const [jambReg, setJambReg] = useState("");
-  const [examYear, setExamYear] = useState(examinationYears[0]);
+  const [examYear, setExamYear] = useState<string>(examinationYears[0] ?? "2024");
   const [loading, setLoading] = useState(false);
   const [verified, setVerified] = useState<Candidate | null>(null);
   const [error, setError] = useState<string | null>(null);

@@ -4,7 +4,7 @@ import { university } from "@/data/portal";
 const quickLinks = [
   { label: "Verify Candidate", to: "/verify" as const },
   { label: "Eligibility", to: "/eligibility" as const },
-  { label: "Programmes", to: "/#programmes" as const },
+  { label: "Programmes", to: "/" as const },
 ];
 const portalLinks = [
   { label: "Home", to: "/" as const },
