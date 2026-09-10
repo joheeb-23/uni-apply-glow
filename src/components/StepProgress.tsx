@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const stepRoute: Record<StepKey, string> = {
   verification: "/verify",
   eligibility: "/eligibility",
-  payment: "/eligibility",
+  payment: "/payment",
   application: "/eligibility",
   documents: "/eligibility",
   review: "/eligibility",

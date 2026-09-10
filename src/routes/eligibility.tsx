@@ -98,9 +98,13 @@ function EligibilityPage() {
               <Link to="/verify">
                 <Button variant="ghost">← Back to Verification</Button>
               </Link>
-              <Button disabled={!eligible}>
-                Proceed to Payment →
-              </Button>
+              {eligible ? (
+                <Link to="/payment">
+                  <Button>Proceed to Payment →</Button>
+                </Link>
+              ) : (
+                <Button disabled>Proceed to Payment →</Button>
+              )}
             </div>
           </Card>
 

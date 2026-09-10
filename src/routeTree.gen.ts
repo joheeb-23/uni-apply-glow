@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EligibilityRouteImport } from './routes/eligibility'
+import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as VerifyRouteImport } from './routes/verify'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const EligibilityRoute = EligibilityRouteImport.update({
   path: '/eligibility',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PaymentRoute = PaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VerifyRoute = VerifyRouteImport.update({
   id: '/verify',
   path: '/verify',
@@ -32,30 +38,34 @@ const VerifyRoute = VerifyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/eligibility': typeof EligibilityRoute
+  '/payment': typeof PaymentRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/eligibility': typeof EligibilityRoute
+  '/payment': typeof PaymentRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/eligibility': typeof EligibilityRoute
+  '/payment': typeof PaymentRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/eligibility' | '/verify'
+  fullPaths: '/' | '/eligibility' | '/payment' | '/verify'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/eligibility' | '/verify'
-  id: '__root__' | '/' | '/eligibility' | '/verify'
+  to: '/' | '/eligibility' | '/payment' | '/verify'
+  id: '__root__' | '/' | '/eligibility' | '/payment' | '/verify'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EligibilityRoute: typeof EligibilityRoute
+  PaymentRoute: typeof PaymentRoute
   VerifyRoute: typeof VerifyRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EligibilityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/payment': {
+      id: '/payment'
+      path: '/payment'
+      fullPath: '/payment'
+      preLoaderRoute: typeof PaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/verify': {
       id: '/verify'
       path: '/verify'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EligibilityRoute: EligibilityRoute,
+  PaymentRoute: PaymentRoute,
   VerifyRoute: VerifyRoute,
 }
 export const routeTree = rootRouteImport
