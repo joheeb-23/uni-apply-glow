@@ -19,7 +19,7 @@ export const examinationYears = ["2024", "2023", "2022", "2021", "2020"];
 
 export const mockCandidate: Candidate = {
   photo:
-    "https://images.unsplash.com/photo-1633332755192-727a05cfa1cd?w=400&h=400&fit=crop&crop=faces",
+    "https://randomuser.me/api/portraits/men/75.jpg",
   fullName: "Oluwaseun Adewale Johnson",
   jambReg: "9876543210",
   jambScore: 214,
