@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as EligibilityRouteImport } from './routes/eligibility'
 import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as VerifyRouteImport } from './routes/verify'
@@ -17,6 +18,11 @@ import { Route as VerifyRouteImport } from './routes/verify'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EligibilityRoute = EligibilityRouteImport.update({
@@ -37,12 +43,14 @@ const VerifyRoute = VerifyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
   '/eligibility': typeof EligibilityRoute
   '/payment': typeof PaymentRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
   '/eligibility': typeof EligibilityRoute
   '/payment': typeof PaymentRoute
   '/verify': typeof VerifyRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
   '/eligibility': typeof EligibilityRoute
   '/payment': typeof PaymentRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/eligibility' | '/payment' | '/verify'
+  fullPaths: '/' | '/dashboard' | '/eligibility' | '/payment' | '/verify'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/eligibility' | '/payment' | '/verify'
-  id: '__root__' | '/' | '/eligibility' | '/payment' | '/verify'
+  to: '/' | '/dashboard' | '/eligibility' | '/payment' | '/verify'
+  id: '__root__' | '/' | '/dashboard' | '/eligibility' | '/payment' | '/verify'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRoute
   EligibilityRoute: typeof EligibilityRoute
   PaymentRoute: typeof PaymentRoute
   VerifyRoute: typeof VerifyRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/eligibility': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRoute,
   EligibilityRoute: EligibilityRoute,
   PaymentRoute: PaymentRoute,
   VerifyRoute: VerifyRoute,
