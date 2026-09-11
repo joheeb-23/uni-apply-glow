@@ -6,7 +6,7 @@ const stepRoute: Record<StepKey, string> = {
   verification: "/verify",
   eligibility: "/eligibility",
   payment: "/payment",
-  application: "/eligibility",
+  application: "/application",
   documents: "/eligibility",
   review: "/eligibility",
   submission: "/eligibility",
