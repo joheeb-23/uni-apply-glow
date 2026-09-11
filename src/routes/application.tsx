@@ -107,7 +107,7 @@ function validate(step: number, form: FormState): Partial<Record<keyof FormState
   return e;
 }
 
-function ErrorText({ children }: { children?: string }) {
+function ErrorText({ children }: { children?: string | undefined }) {
   if (!children) return null;
   return <p className="mt-1 text-xs font-semibold text-destructive">{children}</p>;
 }
@@ -146,7 +146,7 @@ function ApplicationPage() {
     const e = validate(step, form);
     setErrors(e);
     if (Object.keys(e).length > 0) return;
-    setSaved(`${sections[step]} saved locally (demo only).`);
+    setSaved(`${sections[step] ?? "Section"} saved locally (demo only).`);
     if (step < sections.length - 1) setStep((s) => s + 1);
   };
 
@@ -160,7 +160,7 @@ function ApplicationPage() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Application form</p>
-              <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{sections[step]}</h1>
+              <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">{sections[step] ?? ""}</h1>
               <p className="mt-1 text-sm text-foreground/60">
                 Step {step + 1} of {sections.length} · {candidate.programme}
               </p>
