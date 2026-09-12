@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { DashboardShell } from "@/components/DashboardShell";
-import { Badge, Button, Card } from "@/components/ui/primitives";
+import { Badge, Card } from "@/components/ui/primitives";
 import { mockCandidate } from "@/data/candidate";
 
 export const Route = createFileRoute("/submission")({
@@ -100,4 +100,3 @@ function SubmissionPage() {
   );
 }
 
-export { Button as _unused };
