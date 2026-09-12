@@ -101,9 +101,12 @@ function DashboardPage() {
               >
                 Continue Application
               </Link>
-              <Button variant="glass" onClick={() => setDemo("Upload Documents")}>
+              <Link
+                to="/documents"
+                className="frost inline-flex items-center justify-center rounded-xl border border-white/50 bg-white/50 px-6 py-3 text-sm font-semibold text-foreground/80 transition hover:bg-white/70"
+              >
                 Upload Documents
-              </Button>
+              </Link>
               <Link
                 to="/application"
                 className="frost inline-flex items-center justify-center rounded-xl border border-white/50 bg-white/50 px-6 py-3 text-sm font-semibold text-foreground/80 transition hover:bg-white/70"
