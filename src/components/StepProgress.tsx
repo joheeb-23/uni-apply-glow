@@ -7,9 +7,9 @@ const stepRoute: Record<StepKey, string> = {
   eligibility: "/eligibility",
   payment: "/payment",
   application: "/application",
-  documents: "/eligibility",
-  review: "/eligibility",
-  submission: "/eligibility",
+  documents: "/documents",
+  review: "/review",
+  submission: "/review",
 };
 
 export function StepProgress({ current }: { current: StepKey }) {
