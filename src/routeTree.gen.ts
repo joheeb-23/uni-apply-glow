@@ -16,6 +16,7 @@ import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as EligibilityRouteImport } from './routes/eligibility'
 import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as ReviewRouteImport } from './routes/review'
+import { Route as ScreeningSlipRouteImport } from './routes/screening-slip'
 import { Route as SubmissionRouteImport } from './routes/submission'
 import { Route as VerifyRouteImport } from './routes/verify'
 
@@ -54,6 +55,11 @@ const ReviewRoute = ReviewRouteImport.update({
   path: '/review',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScreeningSlipRoute = ScreeningSlipRouteImport.update({
+  id: '/screening-slip',
+  path: '/screening-slip',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SubmissionRoute = SubmissionRouteImport.update({
   id: '/submission',
   path: '/submission',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/eligibility': typeof EligibilityRoute
   '/payment': typeof PaymentRoute
   '/review': typeof ReviewRoute
+  '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/eligibility': typeof EligibilityRoute
   '/payment': typeof PaymentRoute
   '/review': typeof ReviewRoute
+  '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/eligibility': typeof EligibilityRoute
   '/payment': typeof PaymentRoute
   '/review': typeof ReviewRoute
+  '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/eligibility'
     | '/payment'
     | '/review'
+    | '/screening-slip'
     | '/submission'
     | '/verify'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/eligibility'
     | '/payment'
     | '/review'
+    | '/screening-slip'
     | '/submission'
     | '/verify'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/eligibility'
     | '/payment'
     | '/review'
+    | '/screening-slip'
     | '/submission'
     | '/verify'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   EligibilityRoute: typeof EligibilityRoute
   PaymentRoute: typeof PaymentRoute
   ReviewRoute: typeof ReviewRoute
+  ScreeningSlipRoute: typeof ScreeningSlipRoute
   SubmissionRoute: typeof SubmissionRoute
   VerifyRoute: typeof VerifyRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/screening-slip': {
+      id: '/screening-slip'
+      path: '/screening-slip'
+      fullPath: '/screening-slip'
+      preLoaderRoute: typeof ScreeningSlipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/submission': {
       id: '/submission'
       path: '/submission'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   EligibilityRoute: EligibilityRoute,
   PaymentRoute: PaymentRoute,
   ReviewRoute: ReviewRoute,
+  ScreeningSlipRoute: ScreeningSlipRoute,
   SubmissionRoute: SubmissionRoute,
   VerifyRoute: VerifyRoute,
 }
