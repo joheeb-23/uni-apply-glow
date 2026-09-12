@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApplicationRouteImport } from './routes/application'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as EligibilityRouteImport } from './routes/eligibility'
 import { Route as PaymentRouteImport } from './routes/payment'
+import { Route as ReviewRouteImport } from './routes/review'
 import { Route as VerifyRouteImport } from './routes/verify'
 
 const IndexRoute = IndexRouteImport.update({
@@ -31,6 +33,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EligibilityRoute = EligibilityRouteImport.update({
   id: '/eligibility',
   path: '/eligibility',
@@ -39,6 +46,11 @@ const EligibilityRoute = EligibilityRouteImport.update({
 const PaymentRoute = PaymentRouteImport.update({
   id: '/payment',
   path: '/payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewRoute = ReviewRouteImport.update({
+  id: '/review',
+  path: '/review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VerifyRoute = VerifyRouteImport.update({
@@ -51,16 +63,20 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/application': typeof ApplicationRoute
   '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/eligibility': typeof EligibilityRoute
   '/payment': typeof PaymentRoute
+  '/review': typeof ReviewRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/application': typeof ApplicationRoute
   '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/eligibility': typeof EligibilityRoute
   '/payment': typeof PaymentRoute
+  '/review': typeof ReviewRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRoutesById {
@@ -68,8 +84,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/application': typeof ApplicationRoute
   '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/eligibility': typeof EligibilityRoute
   '/payment': typeof PaymentRoute
+  '/review': typeof ReviewRoute
   '/verify': typeof VerifyRoute
 }
 export interface FileRouteTypes {
@@ -78,24 +96,30 @@ export interface FileRouteTypes {
     | '/'
     | '/application'
     | '/dashboard'
+    | '/documents'
     | '/eligibility'
     | '/payment'
+    | '/review'
     | '/verify'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/application'
     | '/dashboard'
+    | '/documents'
     | '/eligibility'
     | '/payment'
+    | '/review'
     | '/verify'
   id:
     | '__root__'
     | '/'
     | '/application'
     | '/dashboard'
+    | '/documents'
     | '/eligibility'
     | '/payment'
+    | '/review'
     | '/verify'
   fileRoutesById: FileRoutesById
 }
@@ -103,8 +127,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApplicationRoute: typeof ApplicationRoute
   DashboardRoute: typeof DashboardRoute
+  DocumentsRoute: typeof DocumentsRoute
   EligibilityRoute: typeof EligibilityRoute
   PaymentRoute: typeof PaymentRoute
+  ReviewRoute: typeof ReviewRoute
   VerifyRoute: typeof VerifyRoute
 }
 
@@ -131,6 +157,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/eligibility': {
       id: '/eligibility'
       path: '/eligibility'
@@ -143,6 +176,13 @@ declare module '@tanstack/react-router' {
       path: '/payment'
       fullPath: '/payment'
       preLoaderRoute: typeof PaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/review': {
+      id: '/review'
+      path: '/review'
+      fullPath: '/review'
+      preLoaderRoute: typeof ReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/verify': {
@@ -159,8 +199,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApplicationRoute: ApplicationRoute,
   DashboardRoute: DashboardRoute,
+  DocumentsRoute: DocumentsRoute,
   EligibilityRoute: EligibilityRoute,
   PaymentRoute: PaymentRoute,
+  ReviewRoute: ReviewRoute,
   VerifyRoute: VerifyRoute,
 }
 export const routeTree = rootRouteImport

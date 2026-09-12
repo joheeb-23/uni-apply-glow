@@ -4,14 +4,18 @@ import { Badge, Modal } from "@/components/ui/primitives";
 import { mockCandidate } from "@/data/candidate";
 import { cn } from "@/lib/utils";
 
-type NavItem = { label: string; icon: string; to?: "/dashboard" | "/application" | "/payment" | "/verify" | "/eligibility" | "/" };
+type NavItem = {
+  label: string;
+  icon: string;
+  to?: "/dashboard" | "/application" | "/payment" | "/verify" | "/eligibility" | "/documents" | "/review" | "/";
+};
 
 const navItems: NavItem[] = [
   { label: "Dashboard", icon: "▤", to: "/dashboard" },
   { label: "My Application", icon: "▦", to: "/application" },
   { label: "Personal Information", icon: "◍", to: "/application" },
   { label: "Academic Information", icon: "✎", to: "/application" },
-  { label: "Documents", icon: "❐" },
+  { label: "Documents", icon: "❐", to: "/documents" },
   { label: "Payment", icon: "₦", to: "/payment" },
   { label: "Screening Slip", icon: "🖨" },
   { label: "Admission Status", icon: "★" },
