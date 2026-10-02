@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { DashboardShell } from "@/components/DashboardShell";
 import { Badge, Button, Card } from "@/components/ui/primitives";
@@ -86,9 +86,9 @@ function Section({
 
 function ReviewPage() {
   const candidate = mockCandidate;
+  const navigate = useNavigate();
   const [confirmed, setConfirmed] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [checkboxError, setCheckboxError] = useState(false);
 
   const uploaded = reviewDocuments.filter((d) => d.file).length;
@@ -113,18 +113,9 @@ function ReviewPage() {
                 Confirm that all information provided is correct before submitting.
               </p>
             </div>
-            <Badge tone={submitted ? "success" : "brand"}>
-              {submitted ? "Submitted" : "Awaiting submission"}
-            </Badge>
+            <Badge tone="brand">Awaiting submission</Badge>
           </div>
         </Card>
-
-        {submitted && (
-          <div className="frost rounded-2xl border border-success/30 bg-success/10 p-4 text-sm font-semibold text-success">
-            Application submitted successfully (demo). Reference APP-2026-004512. You can print your screening slip from
-            the dashboard.
-          </div>
-        )}
 
         <Section title="Personal Information" editTo="/application">
           <div className="grid gap-3 sm:grid-cols-2">
@@ -214,7 +205,6 @@ function ReviewPage() {
             <input
               type="checkbox"
               checked={confirmed}
-              disabled={submitted}
               onChange={(e) => {
                 setConfirmed(e.target.checked);
                 if (e.target.checked) setCheckboxError(false);
@@ -231,9 +221,7 @@ function ReviewPage() {
             </p>
           )}
           <div className="mt-5 flex flex-wrap items-center gap-3">
-            <Button onClick={submit} disabled={submitted}>
-              {submitted ? "Application Submitted" : "Submit Application"}
-            </Button>
+            <Button onClick={submit}>Submit Application</Button>
             <span className="text-xs text-foreground/50">Prototype only — nothing is stored.</span>
           </div>
         </Card>
@@ -254,7 +242,7 @@ function ReviewPage() {
               <Button
                 onClick={() => {
                   setShowConfirm(false);
-                  setSubmitted(true);
+                  void navigate({ to: "/submission" });
                 }}
               >
                 Yes, Submit

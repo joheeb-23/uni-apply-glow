@@ -9,7 +9,7 @@ const stepRoute: Record<StepKey, string> = {
   application: "/application",
   documents: "/documents",
   review: "/review",
-  submission: "/review",
+  submission: "/submission",
 };
 
 export function StepProgress({ current }: { current: StepKey }) {
