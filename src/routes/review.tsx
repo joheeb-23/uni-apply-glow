@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { DashboardShell } from "@/components/DashboardShell";
 import { Badge, Button, Card } from "@/components/ui/primitives";

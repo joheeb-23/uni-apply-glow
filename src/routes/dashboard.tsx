@@ -113,9 +113,12 @@ function DashboardPage() {
               >
                 View Application
               </Link>
-              <Button variant="glass" onClick={() => setDemo("Print Screening Slip")}>
+              <Link
+                to="/screening-slip"
+                className="frost inline-flex items-center justify-center rounded-xl border border-white/50 bg-white/50 px-6 py-3 text-sm font-semibold text-foreground/80 transition hover:bg-white/70"
+              >
                 Print Screening Slip
-              </Button>
+              </Link>
               <Button variant="glass" onClick={() => setDemo("Check Admission Status")}>
                 Check Admission Status
               </Button>

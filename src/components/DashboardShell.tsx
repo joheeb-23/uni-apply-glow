@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 type NavItem = {
   label: string;
   icon: string;
-  to?: "/dashboard" | "/application" | "/payment" | "/verify" | "/eligibility" | "/documents" | "/review" | "/";
+  to?: "/dashboard" | "/application" | "/payment" | "/verify" | "/eligibility" | "/documents" | "/review" | "/submission" | "/screening-slip" | "/";
 };
 
 const navItems: NavItem[] = [
@@ -17,7 +17,7 @@ const navItems: NavItem[] = [
   { label: "Academic Information", icon: "✎", to: "/application" },
   { label: "Documents", icon: "❐", to: "/documents" },
   { label: "Payment", icon: "₦", to: "/payment" },
-  { label: "Screening Slip", icon: "🖨" },
+  { label: "Screening Slip", icon: "🖨", to: "/screening-slip" },
   { label: "Admission Status", icon: "★" },
   { label: "Notifications", icon: "◎" },
   { label: "Profile", icon: "☺" },
