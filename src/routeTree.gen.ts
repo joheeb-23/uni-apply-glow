@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcceptanceFeeRouteImport } from './routes/acceptance-fee'
+import { Route as AdmissionRouteImport } from './routes/admission'
 import { Route as ApplicationRouteImport } from './routes/application'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DocumentsRouteImport } from './routes/documents'
@@ -23,6 +25,16 @@ import { Route as VerifyRouteImport } from './routes/verify'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcceptanceFeeRoute = AcceptanceFeeRouteImport.update({
+  id: '/acceptance-fee',
+  path: '/acceptance-fee',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdmissionRoute = AdmissionRouteImport.update({
+  id: '/admission',
+  path: '/admission',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplicationRoute = ApplicationRouteImport.update({
@@ -73,6 +85,8 @@ const VerifyRoute = VerifyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/acceptance-fee': typeof AcceptanceFeeRoute
+  '/admission': typeof AdmissionRoute
   '/application': typeof ApplicationRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
@@ -85,6 +99,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/acceptance-fee': typeof AcceptanceFeeRoute
+  '/admission': typeof AdmissionRoute
   '/application': typeof ApplicationRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
@@ -98,6 +114,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/acceptance-fee': typeof AcceptanceFeeRoute
+  '/admission': typeof AdmissionRoute
   '/application': typeof ApplicationRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
@@ -112,6 +130,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/acceptance-fee'
+    | '/admission'
     | '/application'
     | '/dashboard'
     | '/documents'
@@ -124,6 +144,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/acceptance-fee'
+    | '/admission'
     | '/application'
     | '/dashboard'
     | '/documents'
@@ -136,6 +158,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/acceptance-fee'
+    | '/admission'
     | '/application'
     | '/dashboard'
     | '/documents'
@@ -149,6 +173,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcceptanceFeeRoute: typeof AcceptanceFeeRoute
+  AdmissionRoute: typeof AdmissionRoute
   ApplicationRoute: typeof ApplicationRoute
   DashboardRoute: typeof DashboardRoute
   DocumentsRoute: typeof DocumentsRoute
@@ -167,6 +193,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/acceptance-fee': {
+      id: '/acceptance-fee'
+      path: '/acceptance-fee'
+      fullPath: '/acceptance-fee'
+      preLoaderRoute: typeof AcceptanceFeeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admission': {
+      id: '/admission'
+      path: '/admission'
+      fullPath: '/admission'
+      preLoaderRoute: typeof AdmissionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/application': {
@@ -237,6 +277,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcceptanceFeeRoute: AcceptanceFeeRoute,
+  AdmissionRoute: AdmissionRoute,
   ApplicationRoute: ApplicationRoute,
   DashboardRoute: DashboardRoute,
   DocumentsRoute: DocumentsRoute,
