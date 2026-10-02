@@ -86,9 +86,9 @@ function Section({
 
 function ReviewPage() {
   const candidate = mockCandidate;
+  const navigate = useNavigate();
   const [confirmed, setConfirmed] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [checkboxError, setCheckboxError] = useState(false);
 
   const uploaded = reviewDocuments.filter((d) => d.file).length;
