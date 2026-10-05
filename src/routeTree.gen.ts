@@ -21,6 +21,8 @@ import { Route as ReviewRouteImport } from './routes/review'
 import { Route as ScreeningSlipRouteImport } from './routes/screening-slip'
 import { Route as SubmissionRouteImport } from './routes/submission'
 import { Route as VerifyRouteImport } from './routes/verify'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminCandidatesIdRouteImport } from './routes/admin.candidates.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -82,6 +84,16 @@ const VerifyRoute = VerifyRouteImport.update({
   path: '/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCandidatesIdRoute = AdminCandidatesIdRouteImport.update({
+  id: '/admin/candidates/$id',
+  path: '/admin/candidates/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -96,6 +108,8 @@ export interface FileRoutesByFullPath {
   '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/candidates/$id': typeof AdminCandidatesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,6 +124,8 @@ export interface FileRoutesByTo {
   '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
+  '/admin': typeof AdminIndexRoute
+  '/admin/candidates/$id': typeof AdminCandidatesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +141,8 @@ export interface FileRoutesById {
   '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/candidates/$id': typeof AdminCandidatesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +159,8 @@ export interface FileRouteTypes {
     | '/screening-slip'
     | '/submission'
     | '/verify'
+    | '/admin/'
+    | '/admin/candidates/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,6 +175,8 @@ export interface FileRouteTypes {
     | '/screening-slip'
     | '/submission'
     | '/verify'
+    | '/admin'
+    | '/admin/candidates/$id'
   id:
     | '__root__'
     | '/'
@@ -169,6 +191,8 @@ export interface FileRouteTypes {
     | '/screening-slip'
     | '/submission'
     | '/verify'
+    | '/admin/'
+    | '/admin/candidates/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -184,6 +208,8 @@ export interface RootRouteChildren {
   ScreeningSlipRoute: typeof ScreeningSlipRoute
   SubmissionRoute: typeof SubmissionRoute
   VerifyRoute: typeof VerifyRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  AdminCandidatesIdRoute: typeof AdminCandidatesIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -272,6 +298,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/candidates/$id': {
+      id: '/admin/candidates/$id'
+      path: '/admin/candidates/$id'
+      fullPath: '/admin/candidates/$id'
+      preLoaderRoute: typeof AdminCandidatesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -288,6 +328,8 @@ const rootRouteChildren: RootRouteChildren = {
   ScreeningSlipRoute: ScreeningSlipRoute,
   SubmissionRoute: SubmissionRoute,
   VerifyRoute: VerifyRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  AdminCandidatesIdRoute: AdminCandidatesIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
