@@ -104,7 +104,7 @@ function AdmissionPage() {
                     <span
                       className={cn(
                         "grid size-8 shrink-0 place-items-center rounded-full text-sm font-bold",
-                        done && !(i === 4 && notOffered) && "bg-success text-success-foreground",
+                        done && !(i === 4 && notOffered) && "bg-success text-primary-foreground",
                         done && i === 4 && notOffered && "bg-destructive text-destructive-foreground",
                         active && "bg-primary text-primary-foreground ring-4 ring-primary/20",
                         !done && !active && "bg-foreground/5 text-foreground/40",
