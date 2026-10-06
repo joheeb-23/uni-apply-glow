@@ -30,18 +30,18 @@ const statuses: AppStatus[] = ["Submitted", "Pending", "Under Review", "Screenin
 export const adminCandidates: AdminCandidate[] = Array.from({ length: 24 }, (_, i) => {
   const score = 160 + ((i * 37) % 140);
   const eligible = score >= 200;
-  const [state, lga] = states[i % states.length];
+  const [state, lga] = states[i % states.length]!;
   const female = i % 2 === 1;
   return {
     id: String(1001 + i),
-    name: `${first[i]} ${last[i % last.length]}`,
+    name: `${first[i]!} ${last[i % last.length]}`,
     jambReg: String(9876543210 - i * 7319),
-    programme: programmes[i % programmes.length],
+    programme: programmes[i % programmes.length]!,
     score,
     eligible,
-    status: eligible ? statuses[i % statuses.length] : i % 2 ? "Rejected" : "Pending",
+    status: eligible ? statuses[i % statuses.length]! : i % 2 ? "Rejected" : "Pending",
     date: `${String(1 + (i % 28)).padStart(2, "0")} Sep 2026`,
-    email: `${first[i].toLowerCase()}.${last[i % last.length].toLowerCase()}@example.com`,
+    email: `${first[i]!.toLowerCase()}.${last[i % last.length]!.toLowerCase()}@example.com`,
     phone: `080${String(31234567 + i * 1111).slice(0, 8)}`,
     gender: female ? "Female" : "Male",
     dob: `${String(1 + (i % 27)).padStart(2, "0")}/0${1 + (i % 9)}/2007`,
