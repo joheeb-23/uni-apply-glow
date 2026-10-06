@@ -24,7 +24,7 @@ export type AdminCandidate = {
 const first = ["Oluwaseun", "Chiamaka", "Ibrahim", "Fatima", "Emeka", "Aisha", "Tunde", "Ngozi", "Musa", "Blessing", "Yusuf", "Adaeze", "Kehinde", "Zainab", "Obinna", "Halima", "Segun", "Ifeoma", "Abdullahi", "Temitope", "Chinedu", "Hauwa", "Babatunde", "Amaka"];
 const last = ["Johnson", "Okafor", "Bello", "Abubakar", "Nwosu", "Mohammed", "Adeyemi", "Eze", "Garba", "Okon", "Lawal", "Obi"];
 const programmes = ["Computer Science", "Accounting", "Business Administration", "Economics", "Mass Communication", "Political Science", "Nursing"];
-const states = [["Oyo", "Ibadan North"], ["Lagos", "Ikeja"], ["Kano", "Nassarawa"], ["Enugu", "Nsukka"], ["Kaduna", "Zaria"], ["Anambra", "Awka South"]];
+const states: [string, string][] = [["Oyo", "Ibadan North"], ["Lagos", "Ikeja"], ["Kano", "Nassarawa"], ["Enugu", "Nsukka"], ["Kaduna", "Zaria"], ["Anambra", "Awka South"]];
 const statuses: AppStatus[] = ["Submitted", "Pending", "Under Review", "Screening Completed", "Admitted", "Submitted", "Pending"];
 
 export const adminCandidates: AdminCandidate[] = Array.from({ length: 24 }, (_, i) => {
