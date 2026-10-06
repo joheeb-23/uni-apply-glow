@@ -22,6 +22,10 @@ import { Route as ScreeningSlipRouteImport } from './routes/screening-slip'
 import { Route as SubmissionRouteImport } from './routes/submission'
 import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as HodIndexRouteImport } from './routes/hod.index'
+import { Route as HodProgrammesRouteImport } from './routes/hod.programmes'
+import { Route as HodSettingsRouteImport } from './routes/hod.settings'
+import { Route as HodUsersRouteImport } from './routes/hod.users'
 import { Route as AdminCandidatesIdRouteImport } from './routes/admin.candidates.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -89,6 +93,26 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HodIndexRoute = HodIndexRouteImport.update({
+  id: '/hod/',
+  path: '/hod/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HodProgrammesRoute = HodProgrammesRouteImport.update({
+  id: '/hod/programmes',
+  path: '/hod/programmes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HodSettingsRoute = HodSettingsRouteImport.update({
+  id: '/hod/settings',
+  path: '/hod/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HodUsersRoute = HodUsersRouteImport.update({
+  id: '/hod/users',
+  path: '/hod/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminCandidatesIdRoute = AdminCandidatesIdRouteImport.update({
   id: '/admin/candidates/$id',
   path: '/admin/candidates/$id',
@@ -108,7 +132,11 @@ export interface FileRoutesByFullPath {
   '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
+  '/hod/programmes': typeof HodProgrammesRoute
+  '/hod/settings': typeof HodSettingsRoute
+  '/hod/users': typeof HodUsersRoute
   '/admin/': typeof AdminIndexRoute
+  '/hod/': typeof HodIndexRoute
   '/admin/candidates/$id': typeof AdminCandidatesIdRoute
 }
 export interface FileRoutesByTo {
@@ -124,7 +152,11 @@ export interface FileRoutesByTo {
   '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
+  '/hod/programmes': typeof HodProgrammesRoute
+  '/hod/settings': typeof HodSettingsRoute
+  '/hod/users': typeof HodUsersRoute
   '/admin': typeof AdminIndexRoute
+  '/hod': typeof HodIndexRoute
   '/admin/candidates/$id': typeof AdminCandidatesIdRoute
 }
 export interface FileRoutesById {
@@ -141,7 +173,11 @@ export interface FileRoutesById {
   '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
+  '/hod/programmes': typeof HodProgrammesRoute
+  '/hod/settings': typeof HodSettingsRoute
+  '/hod/users': typeof HodUsersRoute
   '/admin/': typeof AdminIndexRoute
+  '/hod/': typeof HodIndexRoute
   '/admin/candidates/$id': typeof AdminCandidatesIdRoute
 }
 export interface FileRouteTypes {
@@ -159,7 +195,11 @@ export interface FileRouteTypes {
     | '/screening-slip'
     | '/submission'
     | '/verify'
+    | '/hod/programmes'
+    | '/hod/settings'
+    | '/hod/users'
     | '/admin/'
+    | '/hod/'
     | '/admin/candidates/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -175,7 +215,11 @@ export interface FileRouteTypes {
     | '/screening-slip'
     | '/submission'
     | '/verify'
+    | '/hod/programmes'
+    | '/hod/settings'
+    | '/hod/users'
     | '/admin'
+    | '/hod'
     | '/admin/candidates/$id'
   id:
     | '__root__'
@@ -191,7 +235,11 @@ export interface FileRouteTypes {
     | '/screening-slip'
     | '/submission'
     | '/verify'
+    | '/hod/programmes'
+    | '/hod/settings'
+    | '/hod/users'
     | '/admin/'
+    | '/hod/'
     | '/admin/candidates/$id'
   fileRoutesById: FileRoutesById
 }
@@ -208,7 +256,11 @@ export interface RootRouteChildren {
   ScreeningSlipRoute: typeof ScreeningSlipRoute
   SubmissionRoute: typeof SubmissionRoute
   VerifyRoute: typeof VerifyRoute
+  HodProgrammesRoute: typeof HodProgrammesRoute
+  HodSettingsRoute: typeof HodSettingsRoute
+  HodUsersRoute: typeof HodUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  HodIndexRoute: typeof HodIndexRoute
   AdminCandidatesIdRoute: typeof AdminCandidatesIdRoute
 }
 
@@ -305,6 +357,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hod/': {
+      id: '/hod/'
+      path: '/hod'
+      fullPath: '/hod/'
+      preLoaderRoute: typeof HodIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hod/programmes': {
+      id: '/hod/programmes'
+      path: '/hod/programmes'
+      fullPath: '/hod/programmes'
+      preLoaderRoute: typeof HodProgrammesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hod/settings': {
+      id: '/hod/settings'
+      path: '/hod/settings'
+      fullPath: '/hod/settings'
+      preLoaderRoute: typeof HodSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hod/users': {
+      id: '/hod/users'
+      path: '/hod/users'
+      fullPath: '/hod/users'
+      preLoaderRoute: typeof HodUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/candidates/$id': {
       id: '/admin/candidates/$id'
       path: '/admin/candidates/$id'
@@ -328,7 +408,11 @@ const rootRouteChildren: RootRouteChildren = {
   ScreeningSlipRoute: ScreeningSlipRoute,
   SubmissionRoute: SubmissionRoute,
   VerifyRoute: VerifyRoute,
+  HodProgrammesRoute: HodProgrammesRoute,
+  HodSettingsRoute: HodSettingsRoute,
+  HodUsersRoute: HodUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
+  HodIndexRoute: HodIndexRoute,
   AdminCandidatesIdRoute: AdminCandidatesIdRoute,
 }
 export const routeTree = rootRouteImport
