@@ -3,7 +3,9 @@ import { Link } from "@tanstack/react-router";
 import { Modal } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 
-const items: { label: string; icon: string; to?: "/admin" | "/" }[] = [
+export type ShellItem = { label: string; icon: string; to?: "/admin" | "/" | "/hod" | "/hod/users" | "/hod/programmes" | "/hod/settings" };
+
+const officerItems: ShellItem[] = [
   { label: "Dashboard", icon: "▤", to: "/admin" },
   { label: "Candidates", icon: "◍", to: "/admin" },
   { label: "Applications", icon: "▦" },
@@ -16,7 +18,7 @@ const items: { label: string; icon: string; to?: "/admin" | "/" }[] = [
   { label: "Logout", icon: "⏻", to: "/" },
 ];
 
-export function AdminShell({ active, title, children }: { active: string; title: string; children: ReactNode }) {
+export function AdminShell({ active, title, children, items = officerItems, unit = "Admissions Office", user = { name: "Mrs. A. Bakare", role: "ICT / Admission Officer", initials: "AB" } }: { active: string; title: string; children: ReactNode; items?: ShellItem[]; unit?: string; user?: { name: string; role: string; initials: string } }) {
   const [open, setOpen] = useState(false);
   const [demo, setDemo] = useState<string | null>(null);
 
@@ -48,7 +50,7 @@ export function AdminShell({ active, title, children }: { active: string; title:
             <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary font-display font-bold text-primary-foreground">NU</div>
             <div className="min-w-0">
               <p className="truncate font-display font-bold">Northbridge</p>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">Admissions Office</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">{unit}</p>
             </div>
           </div>
           {nav}
@@ -62,17 +64,17 @@ export function AdminShell({ active, title, children }: { active: string; title:
             </div>
             <div className="flex shrink-0 items-center gap-3">
               <span className="hidden text-right sm:block">
-                <span className="block text-sm font-semibold">Mrs. A. Bakare</span>
-                <span className="block text-xs text-foreground/50">ICT / Admission Officer</span>
+                <span className="block text-sm font-semibold">{user.name}</span>
+                <span className="block text-xs text-foreground/50">{user.role}</span>
               </span>
-              <div className="grid size-9 place-items-center rounded-full bg-primary/10 text-sm font-bold text-primary">AB</div>
+              <div className="grid size-9 place-items-center rounded-full bg-primary/10 text-sm font-bold text-primary">{user.initials}</div>
             </div>
           </header>
           <main className="p-5 lg:p-8">{children}</main>
         </div>
       </div>
       <Modal open={!!demo} title={demo ?? ""} onClose={() => setDemo(null)}>
-        The {demo} section is a placeholder in this prototype. Candidate records are managed from the Dashboard table.
+        The {demo} section is a placeholder in this prototype. Use the working sections in the sidebar to try the prototype.
       </Modal>
     </div>
   );
