@@ -22,6 +22,9 @@ import { Route as ScreeningSlipRouteImport } from './routes/screening-slip'
 import { Route as SubmissionRouteImport } from './routes/submission'
 import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as BursaryIndexRouteImport } from './routes/bursary.index'
+import { Route as BursaryAcceptanceFeesRouteImport } from './routes/bursary.acceptance-fees'
+import { Route as BursaryApplicationFeesRouteImport } from './routes/bursary.application-fees'
 import { Route as HodIndexRouteImport } from './routes/hod.index'
 import { Route as HodProgrammesRouteImport } from './routes/hod.programmes'
 import { Route as HodSettingsRouteImport } from './routes/hod.settings'
@@ -93,6 +96,21 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BursaryIndexRoute = BursaryIndexRouteImport.update({
+  id: '/bursary/',
+  path: '/bursary/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BursaryAcceptanceFeesRoute = BursaryAcceptanceFeesRouteImport.update({
+  id: '/bursary/acceptance-fees',
+  path: '/bursary/acceptance-fees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BursaryApplicationFeesRoute = BursaryApplicationFeesRouteImport.update({
+  id: '/bursary/application-fees',
+  path: '/bursary/application-fees',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HodIndexRoute = HodIndexRouteImport.update({
   id: '/hod/',
   path: '/hod/',
@@ -132,10 +150,13 @@ export interface FileRoutesByFullPath {
   '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
+  '/bursary/acceptance-fees': typeof BursaryAcceptanceFeesRoute
+  '/bursary/application-fees': typeof BursaryApplicationFeesRoute
   '/hod/programmes': typeof HodProgrammesRoute
   '/hod/settings': typeof HodSettingsRoute
   '/hod/users': typeof HodUsersRoute
   '/admin/': typeof AdminIndexRoute
+  '/bursary/': typeof BursaryIndexRoute
   '/hod/': typeof HodIndexRoute
   '/admin/candidates/$id': typeof AdminCandidatesIdRoute
 }
@@ -152,10 +173,13 @@ export interface FileRoutesByTo {
   '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
+  '/bursary/acceptance-fees': typeof BursaryAcceptanceFeesRoute
+  '/bursary/application-fees': typeof BursaryApplicationFeesRoute
   '/hod/programmes': typeof HodProgrammesRoute
   '/hod/settings': typeof HodSettingsRoute
   '/hod/users': typeof HodUsersRoute
   '/admin': typeof AdminIndexRoute
+  '/bursary': typeof BursaryIndexRoute
   '/hod': typeof HodIndexRoute
   '/admin/candidates/$id': typeof AdminCandidatesIdRoute
 }
@@ -173,10 +197,13 @@ export interface FileRoutesById {
   '/screening-slip': typeof ScreeningSlipRoute
   '/submission': typeof SubmissionRoute
   '/verify': typeof VerifyRoute
+  '/bursary/acceptance-fees': typeof BursaryAcceptanceFeesRoute
+  '/bursary/application-fees': typeof BursaryApplicationFeesRoute
   '/hod/programmes': typeof HodProgrammesRoute
   '/hod/settings': typeof HodSettingsRoute
   '/hod/users': typeof HodUsersRoute
   '/admin/': typeof AdminIndexRoute
+  '/bursary/': typeof BursaryIndexRoute
   '/hod/': typeof HodIndexRoute
   '/admin/candidates/$id': typeof AdminCandidatesIdRoute
 }
@@ -195,10 +222,13 @@ export interface FileRouteTypes {
     | '/screening-slip'
     | '/submission'
     | '/verify'
+    | '/bursary/acceptance-fees'
+    | '/bursary/application-fees'
     | '/hod/programmes'
     | '/hod/settings'
     | '/hod/users'
     | '/admin/'
+    | '/bursary/'
     | '/hod/'
     | '/admin/candidates/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -215,10 +245,13 @@ export interface FileRouteTypes {
     | '/screening-slip'
     | '/submission'
     | '/verify'
+    | '/bursary/acceptance-fees'
+    | '/bursary/application-fees'
     | '/hod/programmes'
     | '/hod/settings'
     | '/hod/users'
     | '/admin'
+    | '/bursary'
     | '/hod'
     | '/admin/candidates/$id'
   id:
@@ -235,10 +268,13 @@ export interface FileRouteTypes {
     | '/screening-slip'
     | '/submission'
     | '/verify'
+    | '/bursary/acceptance-fees'
+    | '/bursary/application-fees'
     | '/hod/programmes'
     | '/hod/settings'
     | '/hod/users'
     | '/admin/'
+    | '/bursary/'
     | '/hod/'
     | '/admin/candidates/$id'
   fileRoutesById: FileRoutesById
@@ -256,10 +292,13 @@ export interface RootRouteChildren {
   ScreeningSlipRoute: typeof ScreeningSlipRoute
   SubmissionRoute: typeof SubmissionRoute
   VerifyRoute: typeof VerifyRoute
+  BursaryAcceptanceFeesRoute: typeof BursaryAcceptanceFeesRoute
+  BursaryApplicationFeesRoute: typeof BursaryApplicationFeesRoute
   HodProgrammesRoute: typeof HodProgrammesRoute
   HodSettingsRoute: typeof HodSettingsRoute
   HodUsersRoute: typeof HodUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  BursaryIndexRoute: typeof BursaryIndexRoute
   HodIndexRoute: typeof HodIndexRoute
   AdminCandidatesIdRoute: typeof AdminCandidatesIdRoute
 }
@@ -357,6 +396,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bursary/': {
+      id: '/bursary/'
+      path: '/bursary'
+      fullPath: '/bursary/'
+      preLoaderRoute: typeof BursaryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bursary/acceptance-fees': {
+      id: '/bursary/acceptance-fees'
+      path: '/bursary/acceptance-fees'
+      fullPath: '/bursary/acceptance-fees'
+      preLoaderRoute: typeof BursaryAcceptanceFeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bursary/application-fees': {
+      id: '/bursary/application-fees'
+      path: '/bursary/application-fees'
+      fullPath: '/bursary/application-fees'
+      preLoaderRoute: typeof BursaryApplicationFeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hod/': {
       id: '/hod/'
       path: '/hod'
@@ -408,10 +468,13 @@ const rootRouteChildren: RootRouteChildren = {
   ScreeningSlipRoute: ScreeningSlipRoute,
   SubmissionRoute: SubmissionRoute,
   VerifyRoute: VerifyRoute,
+  BursaryAcceptanceFeesRoute: BursaryAcceptanceFeesRoute,
+  BursaryApplicationFeesRoute: BursaryApplicationFeesRoute,
   HodProgrammesRoute: HodProgrammesRoute,
   HodSettingsRoute: HodSettingsRoute,
   HodUsersRoute: HodUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
+  BursaryIndexRoute: BursaryIndexRoute,
   HodIndexRoute: HodIndexRoute,
   AdminCandidatesIdRoute: AdminCandidatesIdRoute,
 }
