@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Bar, BarChart, CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis, Legend } from "recharts";
 import { HodShell } from "@/components/HodShell";
@@ -47,7 +48,7 @@ const trends = [
 
 const C = ["var(--primary)", "var(--success)", "oklch(0.7 0.14 220)", "oklch(0.75 0.15 75)"];
 
-function ChartCard({ title, children }: { title: string; children: React.ReactElement }) {
+function ChartCard({ title, children }: { title: string; children: ReactElement }) {
   return (
     <Card elevated>
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">{title}</p>
