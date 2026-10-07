@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Modal } from "@/components/ui/primitives";
 import { cn } from "@/lib/utils";
 
-export type ShellItem = { label: string; icon: string; to?: "/admin" | "/" | "/hod" | "/hod/users" | "/hod/programmes" | "/hod/settings" };
+export type ShellItem = { label: string; icon: string; to?: "/admin" | "/" | "/hod" | "/hod/users" | "/hod/programmes" | "/hod/settings" | "/bursary" | "/bursary/application-fees" | "/bursary/acceptance-fees" };
 
 const officerItems: ShellItem[] = [
   { label: "Dashboard", icon: "▤", to: "/admin" },
